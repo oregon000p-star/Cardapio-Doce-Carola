@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio - Doce Carola</title>
+
+  <!-- FONTE -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <style>
+  
+  html {
+  font-size: 16px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, sans-serif;
+    }
+
+    body {
+      background-image: url('/caradapio/assets/img/brigadeiros.jpeg');
+      padding: 20px;
+    }
+
+    #main {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .logo {
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      font-size: 32px;
+      color: #C8626D;
+      margin-bottom: 20px;
+    }
+
+    /* TÍTULO SEÇÃO */
+    .section-title {
+      background-color: #C8626D;
+      color: white;
+      padding: 10px;
+      border-radius: 20px;
+      text-align: center;
+      margin: 25px 0 15px;
+      font-weight: bold;
+    }
+
+    /* GRID */
+    .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+}
+
+    /* CARD */
+    .card {
+      background-color: #FFEDF1;
+      padding: 10px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* IMAGEM REDONDA */
+    .card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ffd6de;
+      margin-bottom: 10px;
+    }
+
+    .name {
+      font-size: 14px;
+      color: #5c3a2e;
+      margin-bottom: 5px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #C8626D;
+    }
+
+    /* DESTAQUE (tipo topo da imagem que você mandou) */
+    .highlight {
+      background-color: #FFEDF1;
+      padding: 15px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .highlight img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #C8626D;
+      margin-top: 10px;
+    }
+
+    .highlight-title {
+      font-weight: bold;
+      color: #894E3F;
+      margin-bottom: 10px;
+    }
+
+    .highlight-price {
+      color: #C8626D;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 25px;
+      text-decoration: none;
+      color: #C8626D;
+      font-weight: bold;
+    }
+    
+   .whatsapp-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+/* BOTÃO */
+.whatsapp-float {
+  width: 62px;
+  height: 62px;
+  background: #25D366;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  transition: 0.3s ease;
+}
+
+/* hover */
+.whatsapp-float:hover {
+  transform: scale(1.12);
+}
+
+/* clique */
+.whatsapp-float:active {
+  transform: scale(0.95);
+}
+
+/* ENTRADA */
+.whatsapp-container.show {
+  animation: fadeUp 0.6s ease;
+}
+
+/* ESCONDER AO SCROLL */
+.whatsapp-container.hide {
+  transform: translateY(100px);
+  opacity: 0;
+}
+
+/* TOOLTIP */
+.tooltip {
+  position: absolute;
+  right: 75px;
+  bottom: 15px;
+  background: #C8626D;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: 0.3s;
+}
+
+.tooltip.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* PULSE CONTROLADO */
+.pulse {
+  animation: pulse 1.8s ease-out 3;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
+  70% { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE PEQUENO */
+@media (max-width: 360px) {
+  .logo {
+    font-size: 22px;
+  }
+  
+  .section-title {
+    font-size: 14px;
+  }
+  
+  .name {
+    font-size: 13px;
+  }
+}
+
+/* MOBILE PADRÃO */
+@media (max-width: 500px) {
+  body {
+    padding: 15px;
+  }
+  
+  .logo {
+    font-size: 26px;
+  }
+  
+  .grid {
+    gap: 10px;
+  }
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  #main {
+    max-width: 700px;
+  }
+  
+  .logo {
+    font-size: 38px;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  #main {
+    max-width: 900px;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+  </style>
+</head>
+
+<body>
+
+  <section id="main">
+
+    <h1 class="logo">Doce Carola</h1>
+
+    <!-- DESTAQUE -->
+    <div class="highlight">
+      <div class="highlight-title">Caixa encanto de mãe</div>
+      <p>Bolo chantininho • Oreo • 1 camada de recheio</p>
+      <img src="/caradapio/assets/img/brigadeiros.jpeg" alt="">
+      <div class="highlight-price">R$ 100,00</div>
+    </div>
+
+    <!-- SOBREMESAS -->
+    <div class="section-title">Sobremesas</div>
+
+    <div class="grid">
+
+      <div class="card">
+        <img src="/caradapio/assets/img/brigadeiro-uva.jpeg">
+        <div class="name">Surpresa de uva</div>
+        <div class="price">R$125,00</div>
+      </div>
+
+      <div class="card">
+        <img src="/caradapio/assets/img/taca-da-felicidade.jpeg">
+        <div class="name">Taça da felicidade</div>
+        <div class="price">R$130,00</div>
+      </div>
+
+      <div class="card">
+        <img src="/caradapio/assets/img/banoffe.jpeg">
+        <div class="name">Banoffee</div>
+        <div class="price">R$125,00</div>
+      </div>
+
+      <div class="card">
+        <img src="/caradapio/assets/img/pave-de-oreo.jpeg">
+        <div class="name">Pavê de Oreo</div>
+        <div class="price">R$140,00</div>
+      </div>
+
+    </div>
+    
+    <div class="whatsapp-container" id="wppBox">
+  
+  <div class="tooltip" id="wppTooltip">
+    💬 Fale conosco
+  </div>
+
+  <a id="wppBtn"
+     href="https://wa.me/5561985159349"
+     target="_blank"
+     class="whatsapp-float">
+
+    <i class="fab fa-whatsapp"></i>
+
+  </a>
+</div>
+
+    <a href="pagina1.html" class="back">← Voltar</a>
+
+  </section>
+  
+  
+  <script>
+  const btn = document.getElementById('wppBtn');
+  const tooltip = document.getElementById('wppTooltip');
+  const box = document.getElementById('wppBox');
+  
+  // Entrada suave
+  window.addEventListener('load', () => {
+    box.classList.add('show');
+    
+    // Pulse só 1 vez (não irrita)
+    setTimeout(() => {
+      btn.classList.add('pulse');
+    }, 1200);
+    
+    // Tooltip aparece depois
+    setTimeout(() => {
+      tooltip.classList.add('show');
+    }, 2000);
+    
+    // Some depois
+    setTimeout(() => {
+      tooltip.classList.remove('show');
+    }, 6000);
+  });
+  
+  // Esconde ao rolar pra baixo
+  let lastScroll = 0;
+  
+  window.addEventListener('scroll', () => {
+    let currentScroll = window.scrollY;
+    
+    if (currentScroll > lastScroll) {
+      box.classList.add('hide');
+    } else {
+      box.classList.remove('hide');
+    }
+    
+    lastScroll = currentScroll;
+  });
+  
+  // Vibração ao clicar (mobile)
+  btn.addEventListener('click', () => {
+    if (navigator.vibrate) {
+      navigator.vibrate(50);
+    }
+  });
+  
+  // Mensagem dinâmica
+  btn.addEventListener('mouseenter', () => {
+    tooltip.textContent = "💬 Faça seu pedido!";
+    tooltip.classList.add('show');
+  });
+  
+  btn.addEventListener('mouseleave', () => {
+    tooltip.classList.remove('show');
+  });
+</script>
+
+</body>
+</html>
